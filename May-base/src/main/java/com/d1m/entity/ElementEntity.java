@@ -9,9 +9,6 @@ import com.d1m.utils.CellMapping;
  */
 public class ElementEntity {
 
-    @CellMapping(cellName = "ModuleName")
-    public String moduleName;
-
     @CellMapping(cellName = "ID")
     public String id;
 
@@ -21,19 +18,8 @@ public class ElementEntity {
     @CellMapping(cellName = "Path")
     public String path;
 
-    @CellMapping(cellName = "DataKey")
-    public String dataKey;
-
     @CellMapping(cellName = "Comment")
     public String comment;
-
-    public String getModuleName() {
-        return moduleName;
-    }
-
-    public void setModuleName(String moduleName) {
-        this.moduleName = moduleName;
-    }
 
     public String getId() {
         return id;
@@ -67,11 +53,4 @@ public class ElementEntity {
         this.comment = comment;
     }
 
-    public String getDataKey() {
-        return dataKey;
-    }
-
-    public void setDataKey(String dataKey) {
-        this.dataKey = dataKey;
-    }
 }

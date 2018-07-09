@@ -32,8 +32,7 @@
 		<!-- slideout menu -->
 		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
 			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
-						<li class='waves-effect'><a href='#!' view='category-view' onclick="configureView(1)"><i class='material-icons'>label_outline</i></a></li>
-			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+						<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
 		</ul>
 
 		<!-- report name -->
@@ -45,7 +44,7 @@
 		<!-- nav-right -->
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<a href='#!'>
-				<span class='label suite-start-time'>Jul 4, 2018 4:09:07 PM</span>
+				<span class='label suite-start-time'>Jul 9, 2018 3:59:38 PM</span>
 			</a>
 			<a href='#!'>
 				<span class='label'>v3.0.3</span>
@@ -74,18 +73,6 @@
 			<!-- test toggle -->
 
 			<!-- category toggle -->
-			<div class='chip transparent'>
-				<a class='dropdown-button category-toggle' data-activates='category-toggle' data-constrainwidth='false' data-beloworigin='true' data-hover='true' href='#'>
-					<i class='material-icons'>local_offer</i> Category
-				</a>
-				<ul id='category-toggle' class='dropdown-content'>
-					<li><a href='#'>dior</a></li>
-					<li><a href='#'>TestDebug</a></li>
-					<li><a href='#'>dior(0)</a></li>
-					<li class='divider'></li>
-					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
-				</ul>
-			</div>
 			<!-- category toggle -->
 
 			<!-- clear filters -->
@@ -129,7 +116,7 @@
 					<canvas id='parent-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span><span class='strong'>2</span> test(s) passed</span>
+					<span><span class='strong'>1</span> test(s) passed</span>
 				</div>
 				<div class='block text-small'>
 					<span class='strong'>0</span> test(s) failed, <span class='strong'>0</span> others
@@ -144,7 +131,7 @@
 					<canvas id='child-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span><span class='strong'>2</span> step(s) passed</span>
+					<span><span class='strong'>1</span> step(s) passed</span>
 				</div>
 				<div class='block text-small'>
 					<span class='strong'>0</span> step(s) failed, <span class='strong'>0</span> others
@@ -162,118 +149,36 @@
 			<ul id='test-collection' class='test-collection'>
 				
 				
-				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='1'>
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
 					<div class='test-heading'>
-						<span class='test-name'>dior : TestDebug</span>
-						<span class='test-time'>Jul 4, 2018 4:09:07 PM</span>
+						<span class='test-name'>login</span>
+						<span class='test-time'>Jul 9, 2018 3:59:38 PM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Jul 4, 2018 4:09:07 PM</span>
-	<span class='label end-time'>Jul 4, 2018 4:09:17 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 10s+440ms</span>
+	<span class='label start-time'>Jul 9, 2018 3:59:38 PM</span>
+	<span class='label end-time'>Jul 9, 2018 3:59:49 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 10s+414ms</span>
 </div>
-	<div class='test-desc'>Pass: 1 ; Fail: 0 ; Skip: 0 ; </div>
-	<div class='test-attributes'>
-			<div class='category-list'>
-				<span class='category label white-text'>dior</span>
-				<span class='category label white-text'>TestDebug</span>
-			</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:59:49 PM</td>
+					<td class='step-details'>Test passed</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
-	<ul class='collapsible node-list' data-collapsible='accordion'>
-		
-				<li class='node level-1 leaf pass' status='pass' test-id='2'>
-					<div class='collapsible-header'>
-						<div class='node-name'>login</div>						
-						<span class='node-time'>Jul 4, 2018 4:09:08 PM</span>
-						<span class='node-duration'>0h 0m 18s+303ms</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-						<div class='collapsible-body'>
-									<div class='category-list right'>
-											<span class='category label white-text'>dior</span>
-											<span class='category label white-text'>TestDebug</span>
-									</div>
-								<div class='node-steps'>
-									<table class='bordered table-results'>
-										<thead>
-											<tr>
-												<th>Status</th>
-												<th>Timestamp</th>
-												<th>Details</th>
-											</tr>
-										</thead>
-										<tbody>
-												<tr class='log' status='pass'>
-													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>4:09:26 PM</td>
-													<td class='step-details'>Test passed</td>
-												</tr>
-										</tbody>
-									</table>
-								</div>
-						</div>
-				</li>
-	</ul>
-					</div>
-				</li>
-				
-				
-				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='3'>
-					<div class='test-heading'>
-						<span class='test-name'>dior (0) : TestDebug</span>
-						<span class='test-time'>Jul 4, 2018 4:09:18 PM</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-					<div class='test-content hide'>
-<div class='test-time-info'>
-	<span class='label start-time'>Jul 4, 2018 4:09:18 PM</span>
-	<span class='label end-time'>Jul 4, 2018 4:09:26 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 8s+26ms</span>
-</div>
-	<div class='test-desc'>Pass: 1 ; Fail: 0 ; Skip: 0 ; </div>
-	<div class='test-attributes'>
-			<div class='category-list'>
-				<span class='category label white-text'>dior(0)</span>
-				<span class='category label white-text'>TestDebug</span>
-			</div>
-	</div>
-	<ul class='collapsible node-list' data-collapsible='accordion'>
-		
-				<li class='node level-1 leaf pass' status='pass' test-id='4'>
-					<div class='collapsible-header'>
-						<div class='node-name'>login</div>						
-						<span class='node-time'>Jul 4, 2018 4:09:18 PM</span>
-						<span class='node-duration'>0h 0m 8s+302ms</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-						<div class='collapsible-body'>
-									<div class='category-list right'>
-											<span class='category label white-text'>dior(0)</span>
-											<span class='category label white-text'>TestDebug</span>
-									</div>
-								<div class='node-steps'>
-									<table class='bordered table-results'>
-										<thead>
-											<tr>
-												<th>Status</th>
-												<th>Timestamp</th>
-												<th>Details</th>
-											</tr>
-										</thead>
-										<tbody>
-												<tr class='log' status='pass'>
-													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>4:09:26 PM</td>
-													<td class='step-details'>Test passed</td>
-												</tr>
-										</tbody>
-									</table>
-								</div>
-						</div>
-				</li>
-	</ul>
 					</div>
 				</li>
 			</ul>
@@ -300,170 +205,7 @@
 	<!-- subview right -->
 
 </div>
-<!-- test view --><div id='category-view' class='view hide'>
-
-	<section id='controls'>
-		<div class='controls grey lighten-4'>
-			<!-- search -->
-			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
-				<a href="#" class='search-div'>
-					<i class='material-icons'>search</i> Search
-				</a>
-				
-				<div class='input-field left hide'>
-					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
-				</div>
-				
-			</div>
-			<!-- search -->
-		</div>
-	</section>
-
-	<div class='subview-left left'>
-		
-		<div class='view-summary'>
-			<h5>Categories</h3>
-			<ul id='category-collection' class='category-collection'>
-				
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>dior</span>
-						<span class='category-status right'>
-							<span class='label pass'>2</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 2</span>
-							
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Jul 4, 2018 4:09:07 PM</td>
-										<td class='linked' test-id='1'>dior</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Jul 4, 2018 4:09:08 PM</td>
-										<td class='linked' test-id='2'>dior.login</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>TestDebug</span>
-						<span class='category-status right'>
-							<span class='label pass'>4</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 4</span>
-							
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Jul 4, 2018 4:09:07 PM</td>
-										<td class='linked' test-id='1'>dior</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Jul 4, 2018 4:09:08 PM</td>
-										<td class='linked' test-id='2'>dior.login</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Jul 4, 2018 4:09:18 PM</td>
-										<td class='linked' test-id='3'>dior (0)</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Jul 4, 2018 4:09:18 PM</td>
-										<td class='linked' test-id='4'>dior (0).login</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>dior(0)</span>
-						<span class='category-status right'>
-							<span class='label pass'>2</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 2</span>
-							
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Jul 4, 2018 4:09:18 PM</td>
-										<td class='linked' test-id='3'>dior (0)</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Jul 4, 2018 4:09:18 PM</td>
-										<td class='linked' test-id='4'>dior (0).login</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-
-			</ul>
-		</div>
-	</div>
-
-	<div class='subview-right left'>
-		<div class='view-summary'>
-			<h5 class='category-name'></h5>
-		</div>
-	</div>
-</div>
-<!-- category view --><!-- exception view --><div id='dashboard-view' class='view hide'>
+<!-- test view --><!-- category view --><!-- exception view --><div id='dashboard-view' class='view hide'>
 	<div class='card-panel transparent np-v'>
 		<h5>Dashboard</h5>
 
@@ -471,63 +213,31 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Tests
-					<div class='panel-lead'>2</div>
+					<div class='panel-lead'>1</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>2</div>
+					<div class='panel-lead'>1</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Jul 4, 2018 4:09:07 PM</div>
+					<div class='panel-lead'>Jul 9, 2018 3:59:38 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Jul 4, 2018 4:09:26 PM</div>
+			 		<div class='panel-lead'>Jul 9, 2018 3:59:49 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>18,808ms</div>
-				</div>
-			</div>
-			<div class='col s4'>
-				<div class='card-panel'>
-					<span class='right label cyan white-text'>Categories</span><p>&nbsp;</p>
-					
-					<table>
-						<tr>
-							<th>Name</th>
-							<th>Passed</th>
-							<th>Failed</th>
-							<th>Others</th>
-						</tr>
-						<tr>
-							<td>dior</td>
-							<td>2</td>
-							<td>0</td>
-							<td>0</td>
-						</tr>
-						<tr>
-							<td>TestDebug</td>
-							<td>4</td>
-							<td>0</td>
-							<td>0</td>
-						</tr>
-						<tr>
-							<td>dior(0)</td>
-							<td>2</td>
-							<td>0</td>
-							<td>0</td>
-						</tr>
-					</table>
+					<div class='panel-lead'>10,561ms</div>
 				</div>
 			</div>
 		</div>
@@ -539,7 +249,7 @@
 
 		<script>
 			var statusGroup = {
-				passParent: 2,
+				passParent: 1,
 				failParent: 0,
 				fatalParent: 0,
 				errorParent: 0,
@@ -547,7 +257,7 @@
 				skipParent: 0,
 				exceptionsParent: 0,
 				
-				passChild: 2,
+				passChild: 1,
 				failChild: 0,
 				fatalChild: 0,
 				errorChild: 0,

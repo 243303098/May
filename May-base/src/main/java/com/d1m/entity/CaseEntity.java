@@ -5,7 +5,7 @@ import com.d1m.utils.CellMapping;
 /**
  * @Auther: Leo.hu
  * @Date: 2018/5/31 15:46
- * @Description:  CaseEntity.xls表的实体类
+ * @Description: CaseEntity.xls表的实体类
  */
 public class CaseEntity {
 
@@ -20,6 +20,9 @@ public class CaseEntity {
 
     @CellMapping(cellName = "ElementId")
     public String elementId;
+
+    @CellMapping(cellName = "DataId")
+    public String dataId;
 
     @CellMapping(cellName = "ActionId")
     public String actionId;
@@ -59,6 +62,14 @@ public class CaseEntity {
         this.elementId = elementId;
     }
 
+    public String getDataId() {
+        return dataId;
+    }
+
+    public void setDataId(String dataId) {
+        this.dataId = dataId;
+    }
+
     public String getActionId() {
         return actionId;
     }
@@ -74,4 +85,5 @@ public class CaseEntity {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
 }

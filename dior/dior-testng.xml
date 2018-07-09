@@ -2,8 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="dior" parallel="classes" thread-count="1">
     <!--<parameter name="url" value="https://abao:Bie7M9Oh@preprod.dior.cn/beauty/zh_cn/store/customer/account/login"/>-->
-    <parameter name="url" value="http://www.runoob.com/try/try.php?filename=tryjs_alert"/>
-    <parameter name="project" value=""/>
+    <parameter name="url" value="https://www.51bel.com/account/login"/>
     <test parallel="classes" preserve-order="false" name="TestDebug">
         <classes>
             <class name="com.d1m.excute.ExcuteAllCase"/>

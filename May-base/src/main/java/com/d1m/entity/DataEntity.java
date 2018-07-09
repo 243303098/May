@@ -12,8 +12,8 @@ public class DataEntity {
     @CellMapping(cellName = "ID")
     public String id;
 
-    @CellMapping(cellName = "KeyData")
-    public String keyData;
+    @CellMapping(cellName = "Data")
+    public String data;
 
     @CellMapping(cellName = "Comment")
     public String comment;
@@ -26,12 +26,12 @@ public class DataEntity {
         this.id = id;
     }
 
-    public String getKeyData() {
-        return keyData;
+    public String getData() {
+        return data;
     }
 
-    public void setKeyData(String keyData) {
-        this.keyData = keyData;
+    public void setData(String data) {
+        this.data = data;
     }
 
     public String getComment() {
