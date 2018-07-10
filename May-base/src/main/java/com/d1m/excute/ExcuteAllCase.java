@@ -1,5 +1,6 @@
 package com.d1m.excute;
 
+import com.aventstack.extentreports.ExtentReports;
 import com.d1m.actions.ActionType;
 import com.d1m.actions.ByType;
 import com.d1m.entity.CaseDetailsEntity;
@@ -13,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
+import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -68,12 +70,13 @@ public class ExcuteAllCase {
      */
     @Test(dataProvider = "createTestData")
     public void excute(ITestContext context, String moduleName, List<CaseDetailsEntity> caseDetailsEntityList) {
-
+        Reporter.log("-----开始执行测试------");
         //开始执行某一模块时打开浏览器
         setDriver(DriverFactory.getInstance().getFirefoxDriver());
         driver.manage().window().maximize();
         //driver.get("https://abao:Bie7M9Oh@preprod.dior.cn/beauty/zh_cn/store/customer/account/login");
         driver.get(context.getCurrentXmlTest().getParameter("url"));
+        Reporter.log("当前打开的url为：" + context.getCurrentXmlTest().getParameter("url"));
         softAssert = new SoftAssert();
         //遍历caseDetailsEntityList，挨个执行具体的case
         for (int j = 0; j < caseDetailsEntityList.size(); j++) {
@@ -82,23 +85,28 @@ public class ExcuteAllCase {
                 //判断是否有前置模块
                 if (StringTools.isNullOrEmpty(caseDetailsEntityList.get(0).getPreModule())) {
                     //如果没有前置模块则直接执行
+                    Reporter.log("当前模块没有前置模块");
                     excuteCaseDetail(caseDetailsEntityList.get(j));
                 } else {
                     //如果有前置模块，则获取所有的前置模块，挨个执行
                     String[] preModule = caseDetailsEntityList.get(0).getPreModule().split(",");
                     for (int k = 0; k < preModule.length; k++) {
+                        Reporter.log("执行的前置模块为：" + preModule[k]);
                         excuteSingleModule(preModule[k]);
                     }
+                    Reporter.log("前置模块全部执行完毕，开始执行测试模块");
                     //执行完前置模块再执行当前模块
                     excuteCaseDetail(caseDetailsEntityList.get(j));
                 }
             } else {
+                Reporter.log("无前置模块，开始执行测试模块");
                 excuteCaseDetail(caseDetailsEntityList.get(j));
             }
         }
         softAssert.assertAll();
         //一个模块执行完毕之后，关闭浏览器
         driver.quit();
+        Reporter.log("-----执行完毕-----");
     }
 
     /**
@@ -157,10 +165,12 @@ public class ExcuteAllCase {
      * @date: 2018/6/6 15:19
      */
     public void excuteCaseDetail(CaseDetailsEntity caseDetailsEntity) {
+        Reporter.log("当前执行步骤的ID为：" + caseDetailsEntity.getId());
         //操作枚举类型
         actionType = ActionType.getEnumByValue(caseDetailsEntity.getActionType());
         actionKey = ActionType.getEnumByValue(caseDetailsEntity.getActionKey());
         webElement = getElement(driver, caseDetailsEntity);
+        Reporter.log("执行的ActionType为：" + actionType + "-----ActionKey为：" + actionKey + "-----被执行的元素为：" + webElement);
         try {
             doAllAction(caseDetailsEntity);
         } catch (Exception e) {
@@ -193,13 +203,13 @@ public class ExcuteAllCase {
                     return null;
                 }
             } catch (ElementNotVisibleException e) {
-                LOGGER.error("元素：" + caseDetailsEntity.getElementPath() + "不可见" + e.getMessage());
+                Reporter.log("元素：" + caseDetailsEntity.getElementPath() + "不可见" + e.getMessage());
                 return null;
             } catch (NoSuchElementException e) {
-                LOGGER.error("元素：" + caseDetailsEntity.getElementPath() + "不存在" + e.getMessage());
+                Reporter.log("元素：" + caseDetailsEntity.getElementPath() + "不存在" + e.getMessage());
                 return null;
             } catch (TimeoutException e) {
-                LOGGER.error("元素：" + caseDetailsEntity.getElementPath() + "查询超时" + e.getMessage());
+                Reporter.log("元素：" + caseDetailsEntity.getElementPath() + "查询超时" + e.getMessage());
                 return null;
             }
         }
@@ -234,7 +244,7 @@ public class ExcuteAllCase {
             case ByType.TAGNAME:
                 return By.tagName(path);
             default:
-                LOGGER.error("未找到合适的类型：", locationType);
+                Reporter.log("未找到合适的类型：" + locationType);
                 throw new UnsupportedOperationException();
         }
     }
@@ -489,13 +499,13 @@ public class ExcuteAllCase {
                 }
                 driver.switchTo().window(winIdList.get(0));
                 if (winIdList.size() > 1) {
-                    LOGGER.info("There is too many windows,please confirm last page operation is open one window");
+                    Reporter.log("There is too many windows,please confirm last page operation is open one window");
                 }
             } else {
-                LOGGER.info("There is no more window,please check the explore is regular work!");
+                Reporter.log("There is no more window,please check the explore is regular work!");
             }
         } catch (NoSuchWindowException e) {
-            LOGGER.error("未找到新窗口！" + e.getSystemInformation());
+            Reporter.log("未找到新窗口！" + e.getSystemInformation());
         }
     }
 
@@ -511,7 +521,7 @@ public class ExcuteAllCase {
         try {
             driver.switchTo().frame(frameElement);
         } catch (NoSuchFrameException e) {
-            LOGGER.error("driver.switchTo().frame failed ,element " + frameElement.toString() + "not found ");
+            Reporter.log("driver.switchTo().frame failed ,element " + frameElement.toString() + "not found ");
         }
     }
 
@@ -531,16 +541,16 @@ public class ExcuteAllCase {
                 driver.switchTo().window(winIdList.get(winIdList.size() - 1));
                 driver.close();
                 driver.switchTo().window(currentWindow);
-                LOGGER.info("current window id is " + currentWindow);
-                LOGGER.info("current window url is " + driver.getCurrentUrl());
+                Reporter.log("current window id is " + currentWindow);
+                Reporter.log("current window url is " + driver.getCurrentUrl());
                 if (winIdList.size() > 1) {
-                    LOGGER.info("There is too many windows,please confirm last page operation is open one window");
+                    Reporter.log("There is too many windows,please confirm last page operation is open one window");
                 }
             } else {
-                LOGGER.info("There is no more window,please check the explore is regular work!");
+                Reporter.log("There is no more window,please check the explore is regular work!");
             }
         } catch (NoSuchWindowException e) {
-            LOGGER.error("could not find the new window" + e.getSystemInformation());
+            Reporter.log("could not find the new window" + e.getSystemInformation());
         }
     }
 
