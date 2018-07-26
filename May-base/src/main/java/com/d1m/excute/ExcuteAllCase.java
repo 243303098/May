@@ -296,7 +296,7 @@ public class ExcuteAllCase {
                     webElement.click();
                     break;
                 } catch (Exception e) {
-                    LOGGER.error("执行出现错误" + e);
+                    Reporter.log("点击" + webElement + "时发生异常：" + e);
                 }
             case IMPLICIT_CLICK:
                 JavascriptExecutor js_implicit = (JavascriptExecutor) driver;
