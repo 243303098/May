@@ -119,7 +119,7 @@ public class ExcuteAllCase {
      */
     @DataProvider
     public Object[][] createTestData() {
-    //public Object[][] createTestData(ITestContext context) {
+        //public Object[][] createTestData(ITestContext context) {
         //String path = context.getCurrentXmlTest().getParameter("project");
         //将所有的case按模块名称划分
         moduleEntityManager = new ModuleEntityManager();
@@ -194,7 +194,7 @@ public class ExcuteAllCase {
             By by = toBy(caseDetailsEntity);
             // 添加等待时间,获得元素
             try {
-                WebDriverWait wait = new WebDriverWait(driver, 15);
+                WebDriverWait wait = new WebDriverWait(driver, 30);
                 wait.until(ExpectedConditions.presenceOfElementLocated(by));
                 List<WebElement> elements = driver.findElements(by);
                 if (elements.size() > 0) {
@@ -204,12 +204,15 @@ public class ExcuteAllCase {
                 }
             } catch (ElementNotVisibleException e) {
                 Reporter.log("元素：" + caseDetailsEntity.getElementPath() + "不可见" + e.getMessage());
+                softAssert.assertTrue(false, "元素：" + caseDetailsEntity.getElementPath() + "不可见" + e.getMessage());
                 return null;
             } catch (NoSuchElementException e) {
                 Reporter.log("元素：" + caseDetailsEntity.getElementPath() + "不存在" + e.getMessage());
+                softAssert.assertTrue(false, "元素：" + caseDetailsEntity.getElementPath() + "不存在" + e.getMessage());
                 return null;
             } catch (TimeoutException e) {
                 Reporter.log("元素：" + caseDetailsEntity.getElementPath() + "查询超时" + e.getMessage());
+                softAssert.assertTrue(false, "元素：" + caseDetailsEntity.getElementPath() + "查询超时" + e.getMessage());
                 return null;
             }
         }
@@ -244,8 +247,8 @@ public class ExcuteAllCase {
             case ByType.TAGNAME:
                 return By.tagName(path);
             default:
-                Reporter.log("未找到合适的类型：" + locationType);
-                throw new UnsupportedOperationException();
+                Reporter.log("未匹配到元素类型，默认使用xpath查找元素");
+                return By.xpath(path);
         }
     }
 

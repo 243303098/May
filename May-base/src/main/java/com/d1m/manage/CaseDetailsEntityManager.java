@@ -1,6 +1,7 @@
 package com.d1m.manage;
 
 import com.d1m.entity.*;
+import com.d1m.utils.StringTools;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +62,12 @@ public class CaseDetailsEntityManager {
                 caseDetailsEntity.setElementPath(null);
                 caseDetailsEntity.setElementComment(null);
             }else {
-                caseDetailsEntity.setElementLocationType(elementEntity.getLocationType());
+                //如果没有填写locationtype 则默认使用xpath
+                if (StringTools.isNullOrEmpty(elementEntity.getLocationType())){
+                    caseDetailsEntity.setElementLocationType("xpath");
+                }else {
+                    caseDetailsEntity.setElementLocationType(elementEntity.getLocationType());
+                }
                 caseDetailsEntity.setElementPath(elementEntity.getPath());
                 caseDetailsEntity.setElementComment(elementEntity.getComment());
             }
