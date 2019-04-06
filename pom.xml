@@ -11,6 +11,7 @@
     <modules>
         <module>dior</module>
         <module>May-base</module>
+        <module>longines</module>
     </modules>
 
     <dependencies>

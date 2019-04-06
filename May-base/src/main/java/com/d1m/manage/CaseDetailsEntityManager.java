@@ -83,5 +83,4 @@ public class CaseDetailsEntityManager {
         }
         return caseDetailsEntityList;
     }
-
 }

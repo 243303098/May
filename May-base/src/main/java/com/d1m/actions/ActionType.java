@@ -145,7 +145,17 @@ public enum ActionType {
     /**
      * get attribute and if equal the given value.
      */
-    GETATTRIBUTE("GETATTRIBUTE1");
+    GETATTRIBUTE("GETATTRIBUTE1"),
+
+    /**
+     * 通过接口打开URL
+     */
+    OPEN("OPEN"),
+
+    /**
+     * 通过浏览器打开URL
+     */
+    OPENBR("OPENBR");
 
 
     /**

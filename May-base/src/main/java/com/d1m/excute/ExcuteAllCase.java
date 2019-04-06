@@ -1,6 +1,5 @@
 package com.d1m.excute;
 
-import com.aventstack.extentreports.ExtentReports;
 import com.d1m.actions.ActionType;
 import com.d1m.actions.ByType;
 import com.d1m.entity.CaseDetailsEntity;
@@ -58,7 +57,7 @@ public class ExcuteAllCase {
     /* 页面元素 */
     private WebElement webElement;
 
-    private SoftAssert softAssert;
+    private static SoftAssert softAssert = new SoftAssert();
 
     /**
      * 功能描述: 测试执行类
@@ -75,9 +74,8 @@ public class ExcuteAllCase {
         setDriver(DriverFactory.getInstance().getFirefoxDriver());
         driver.manage().window().maximize();
         //driver.get("https://abao:Bie7M9Oh@preprod.dior.cn/beauty/zh_cn/store/customer/account/login");
-        driver.get(context.getCurrentXmlTest().getParameter("url"));
+        //driver.get(context.getCurrentXmlTest().getParameter("url"));
         Reporter.log("当前打开的url为：" + context.getCurrentXmlTest().getParameter("url"));
-        softAssert = new SoftAssert();
         //遍历caseDetailsEntityList，挨个执行具体的case
         for (int j = 0; j < caseDetailsEntityList.size(); j++) {
             //如果是第一次执行，则判断是否有前置模块，后面则不再判断
@@ -103,9 +101,9 @@ public class ExcuteAllCase {
                 excuteCaseDetail(caseDetailsEntityList.get(j));
             }
         }
-        softAssert.assertAll();
         //一个模块执行完毕之后，关闭浏览器
         driver.quit();
+        softAssert.assertAll();
         Reporter.log("-----执行完毕-----");
     }
 
@@ -170,7 +168,7 @@ public class ExcuteAllCase {
         actionType = ActionType.getEnumByValue(caseDetailsEntity.getActionType());
         actionKey = ActionType.getEnumByValue(caseDetailsEntity.getActionKey());
         webElement = getElement(driver, caseDetailsEntity);
-        Reporter.log("执行的ActionType为：" + actionType + "-----ActionKey为：" + actionKey + "-----被执行的元素为：" + webElement);
+        Reporter.log("执行的ActionType为：" + actionType + "-----ActionKey为：" + actionKey + "-----被执行的元素为：" + webElement+ "-----执行的参数为：" + caseDetailsEntity.getElementData());
         try {
             doAllAction(caseDetailsEntity);
         } catch (Exception e) {
@@ -333,6 +331,13 @@ public class ExcuteAllCase {
             case GETALERTTEXT:
                 alert = driver.switchTo().alert();
                 alert.getText();
+                break;
+            case OPEN:
+                driver.get(caseDetailsEntity.getElementData());
+                //HttpClientUtil.sendHttpGet(caseDetailsEntity.getElementData(), softAssert);
+                break;
+            case OPENBR:
+                driver.get(caseDetailsEntity.getElementData());
                 break;
             default:
                 actions.release();

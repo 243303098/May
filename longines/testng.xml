@@ -2,7 +2,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="dior" parallel="classes" thread-count="1">
     <parameter name="url" value="https://www.longines.cn"/>
-    <!--<parameter name="url" value="https://www.51bel.com/account/login"/>-->
     <test parallel="classes" preserve-order="false" name="TestDebug">
         <classes>
             <class name="com.d1m.excute.ExcuteAllCase"/>
